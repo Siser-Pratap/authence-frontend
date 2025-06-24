@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent;
+  }
+
+  .glass-effect {
+    @apply backdrop-blur-3xl bg-black rounded-lg ;
+  }
+
+  .glow-effect {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+}
+
+/* GSAP Animation Classes */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.scale-in {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.rotate-in {
+  opacity: 0;
+  transform: rotate(-10deg) scale(0.9);
+}
