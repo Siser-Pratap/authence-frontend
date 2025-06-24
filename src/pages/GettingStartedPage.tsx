@@ -42,17 +42,19 @@ export default function GettingStartedPage() {
         ease: "power3.out",
       })
 
-      gsap.from(stepsRef.current?.children, {
-        opacity: 0,
-        y: 50,
-        duration: 0.8,
-        stagger: 0.3,
-        scrollTrigger: {
-          trigger: stepsRef.current,
-          start: "top 80%",
-          toggleActions: "play none none reverse",
-        },
-      })
+      if (stepsRef.current?.children) {
+        gsap.from(Array.from(stepsRef.current.children), {
+          opacity: 0,
+          y: 50,
+          duration: 0.8,
+          stagger: 0.3,
+          scrollTrigger: {
+            trigger: stepsRef.current,
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+          },
+        })
+      }
     }, containerRef)
 
     return () => ctx.revert()

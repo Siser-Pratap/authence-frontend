@@ -21,54 +21,7 @@ export function StatsSection() {
   const statsRef = useRef<HTMLDivElement>(null)
   const [animatedValues, setAnimatedValues] = useState(stats.map(() => 0))
 
-  // useEffect(() => {
-  //   const ctx = gsap.context(() => {
-  //     const tl = gsap.timeline({
-  //       scrollTrigger: {
-  //         trigger: sectionRef.current,
-  //         start: "top 70%",
-  //         toggleActions: "play none none reverse",
-  //       },
-  //     })
-
-  //     tl.from(statsRef.current ? Array.from(statsRef.current.children) : [], {
-  //       opacity: 0,
-  //       y: 50,
-  //       duration: 0.8,
-  //       stagger: 0.2,
-  //     })
-
-  //     // Animate numbers
-  //     stats.forEach((stat, index) => {
-  //       gsap.to(
-  //         { value: 0 },
-  //         {
-  //           value: stat.value,
-  //           duration: 2,
-  //           ease: "power2.out",
-  //           scrollTrigger: {
-  //             trigger: sectionRef.current,
-  //             start: "top 70%",
-  //             toggleActions: "play none none reverse",
-  //           },
-  //           onUpdate: function () {
-  //             setAnimatedValues((prev) => {
-  //               const newValues = [...prev]
-  //               newValues[index] = Math.floor(this.targets()[0].value)
-  //               return newValues
-  //             })
-  //           },
-  //         },
-  //       )
-  //     })
-  //   }, sectionRef)
-
-  //   return () => ctx.revert()
-  // }, [])
-
-  useLayoutEffect(() => {
-    if (!statsRef.current) return
-
+  useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -78,20 +31,26 @@ export function StatsSection() {
         },
       })
 
-      tl.from(Array.from(statsRef.current.children), {
+      tl.from(statsRef.current ? Array.from(statsRef.current.children) : [], {
         opacity: 0,
         y: 50,
         duration: 0.8,
         stagger: 0.2,
       })
 
+      // Animate numbers
       stats.forEach((stat, index) => {
-        tl.to(
+        gsap.to(
           { value: 0 },
           {
             value: stat.value,
-            duration: 1.2,
+            duration: 2,
             ease: "power2.out",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top 70%",
+              toggleActions: "play none none reverse",
+            },
             onUpdate: function () {
               setAnimatedValues((prev) => {
                 const newValues = [...prev]
@@ -100,13 +59,54 @@ export function StatsSection() {
               })
             },
           },
-          "<" // start at the same time as fade-in
         )
       })
     }, sectionRef)
 
     return () => ctx.revert()
   }, [])
+
+  // useLayoutEffect(() => {
+  //   if (!statsRef.current) return
+
+  //   const ctx = gsap.context(() => {
+  //     const tl = gsap.timeline({
+  //       scrollTrigger: {
+  //         trigger: sectionRef.current,
+  //         start: "top 70%",
+  //         toggleActions: "play none none reverse",
+  //       },
+  //     })
+
+  //     tl.from(Array.from(statsRef.current.children), {
+  //       opacity: 0,
+  //       y: 50,
+  //       duration: 0.8,
+  //       stagger: 0.2,
+  //     })
+
+  //     stats.forEach((stat, index) => {
+  //       tl.to(
+  //         { value: 0 },
+  //         {
+  //           value: stat.value,
+  //           duration: 1.2,
+  //           ease: "power2.out",
+  //           onUpdate: function () {
+  //             setAnimatedValues((prev) => {
+  //               const newValues = [...prev]
+  //               newValues[index] = Math.floor(this.targets()[0].value)
+  //               return newValues
+  //             })
+  //           },
+  //         },
+  //         "<" // start at the same time as fade-in
+  //       )
+  //     })
+  //   }, sectionRef)
+
+  //   return () => ctx.revert()
+  // }, [])
   
   return (
     <section ref={sectionRef} className="py-20 px-4">

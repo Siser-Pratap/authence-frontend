@@ -19,8 +19,8 @@ export function BackgroundAnimation() {
       const colors = ["bg-blue-400", "bg-purple-400", "bg-cyan-400", "bg-pink-400", "bg-green-400"]
       const sizes = ["w-2 h-2", "w-3 h-3", "w-4 h-4", "w-1 h-1"]
 
-      particle.classList.add(colors[Math.floor(Math.random() * colors.length)])
-      particle.classList.add(...sizes[Math.floor(Math.random() * sizes.length)].split(" "))
+      particle.classList.add(colors[Math.floor(Math.random() * colors.length+i)])
+      particle.classList.add(...sizes[Math.floor(Math.random() * sizes.length+i)].split(" "))
 
       // Random position
       particle.style.left = `${Math.random() * 100}%`
