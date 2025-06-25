@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 import { Button } from "./ui/button"
 import { ArrowRight, Download } from "lucide-react"
 import { gsap } from "gsap"
-s
+
 
 export function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null)
