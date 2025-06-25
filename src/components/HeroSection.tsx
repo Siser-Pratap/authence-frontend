@@ -6,7 +6,6 @@ import { Button } from "./ui/button"
 import { ArrowRight, Download } from "lucide-react"
 import { gsap } from "gsap"
 
-
 export function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null)
   const titleRef = useRef<HTMLHeadingElement>(null)

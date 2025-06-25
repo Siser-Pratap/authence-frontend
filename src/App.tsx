@@ -7,7 +7,7 @@ import SignInPage from "./pages/SignInPage"
 import SignUpPage from "./pages/SignUpPage"
 import DashboardLayout from "./pages/DashboardLayout"
 import ProfilePage from "./pages/dashboard/ProfilePage"
-import Statspage from "./pages/dashboard/Statspage"
+import Stats from "./pages/dashboard/stats"
 import ApiKeysPage from "./pages/dashboard/ApiKeysPage"
 
 function App() {
@@ -49,7 +49,7 @@ function App() {
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route index element={<ProfilePage />} />
           <Route path="profile" element={<ProfilePage />} />
-          <Route path="stats" element={<Statspage />} />
+          <Route path="stats" element={<Stats />} />
           <Route path="api-keys" element={<ApiKeysPage />} />
         </Route>
       </Routes>
