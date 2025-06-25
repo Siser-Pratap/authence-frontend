@@ -42,7 +42,7 @@ const statsData = [
   },
 ]
 
-export default function StatsPage() {
+export default function Statspage() {
   const containerRef = useRef<HTMLDivElement>(null)
   const cardsRef = useRef<HTMLDivElement>(null)
   const [animatedValues, setAnimatedValues] = useState(statsData.map(() => 0))
